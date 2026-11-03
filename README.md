@@ -20,8 +20,8 @@ The dataset is a collection of **Engipedia** articles (Renault's internal wiki),
 .
 ├── data/                       # Dataset (not versioned), to be added locally
     ├── engipedia.json              # Original dataset
-    ├── exploration                 # Exploration of the dataset
-    └── knowledge_graph             # Graphs made from the dataset
+    ├── exploration/                 # Exploration of the dataset
+    └── knowledge_graph/             # Graphs made from the dataset
 ├── data_processing_scripts/    # Exploratory analysis and data preparation
 ├── knowledge_graph/            # Knowledge graph construction (cognee)
 ├── .env.example                # Configuration template
