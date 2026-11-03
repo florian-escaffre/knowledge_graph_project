@@ -1,0 +1,6 @@
+venv/
+.env
+data/
+Renault Group - 2026-2027.pdf
+__pycache__/
+*.pyc
