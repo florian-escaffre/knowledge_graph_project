@@ -29,7 +29,7 @@ link_pairs = [(e["_term"], t) for e in ents for t in (e.get("_linked_terms") or 
 print("\n--- Links ---")
 print("Total links:", len(link_pairs))
 print("Articles with >=1 link:", sum(l > 0 for l in links))
-print("Links pointing to an existing article:", sum(t in terms for t in link_pairs), "/", len(link_pairs))
+print("Links pointing to an existing article:", sum(t in terms for _, t in link_pairs), "/", len(link_pairs))
 
 # Text lengths (decides which articles are worth cognify)
 lens = [len(e.get("_text") or "") for e in ents]
