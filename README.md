@@ -20,10 +20,12 @@ The dataset is a collection of **Engipedia** articles (Renault's internal wiki),
 .
 ├── data/                       # Dataset (not versioned), to be added locally
     ├── engipedia.json              # Original dataset
-    ├── exploration/                 # Exploration of the dataset
-    └── knowledge_graph/             # Graphs made from the dataset
-├── data_processing_scripts/    # Exploratory analysis and data preparation
-├── knowledge_graph/            # Knowledge graph construction (cognee)
+    ├── exploration/                # Results of the EDA
+    └── knowledge_graph/            # Graphs made from the dataset
+├── data_processing_scripts/    # Exploratory analysis and data preparation (for now only exploratory data analysis to understand better the dataset)
+├── knowledge_graph/            # Scripts used to build a graph with cognee (for now, only contains a test of cognee usage)
+├── Reports/                    
+    └── Draft Report                # Draft of the report, with steps of work and reflexions
 ├── .env.example                # Configuration template
 ├── requirements.txt            # Python dependencies
 └── README.md

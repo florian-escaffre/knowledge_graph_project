@@ -1,7 +1,7 @@
 import asyncio, json, cognee
 from cognee import visualize_graph
 
-# Minimal test: send the first 3 Engipedia articles to Cognee, build the graph, save an HTML visualization.
+# Minimal test: send the first 5 Engipedia articles to Cognee, build the graph, save an HTML visualization.
 data = json.load(open("data/engipedia_fr_store.json", encoding="utf-8"))
 ents = list(data["entities"].values())[:5]
 
