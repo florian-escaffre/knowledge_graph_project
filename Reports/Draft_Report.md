@@ -33,7 +33,7 @@ Exploration of the dataset with a Python script (`data_processing_scripts/explor
 - This is not enough to make a knowledge graph : need to reorganize the categories, name the links (relationships), complete the relationships... So as to build a proper Knowledge Graph Schema
 
 
-the script explore_data_v2.py generates a HTML report with four tabs: categories → articles (multi-category and isolated articles flagged), multi-category articles, isolated articles, and link counts between categories.
+The script explore_data_v2.py generates a HTML report with four tabs: categories → articles (multi-category and isolated articles flagged), multi-category articles, isolated articles, and link counts between categories.
 
 **Categories**
 - 81 entries: the 80 categories + "(none)". Largest: (none) 525, Manufacturing 343,
