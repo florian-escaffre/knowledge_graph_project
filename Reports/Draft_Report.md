@@ -32,6 +32,32 @@ Exploration of the dataset with a Python script (`data_processing_scripts/explor
 - The dataset already contains many categories, entities and links between entities.
 - This is not enough to make a knowledge graph : need to reorganize the categories, name the links (relationships), complete the relationships... So as to build a proper Knowledge Graph Schema
 
+
+The script explore_data_v2.py generates a HTML report with four tabs: categories → articles (multi-category and isolated articles flagged), multi-category articles, isolated articles, and link counts between categories.
+
+**Categories**
+- 81 entries: the 80 categories + "(none)". Largest: (none) 525, Manufacturing 343,
+  Composants 212, Powertrain 206, 3EA 193, Fonctions 169, Qualité/Quality 154.
+- Names mix French and English, and some overlap or duplicate each other
+  (e.g. Qualité vs Qualité/Quality, Powertrain vs Electric Powertrain,
+  IS/IT vs Système d'information).
+
+**Multi-category articles (631)**
+- 586 articles have 2 categories, 45 have 3.
+- Most frequent overlaps: Composants–Powertrain (54), 3EA–Composants (37),
+  Composants–Equipements (28), Fonctions–Manufacturing (27), MBSE–SDV (17).
+  
+These suggest categories to merge or to arrange hierarchically.
+
+**Isolated articles**
+- No incoming or outgoing link to another article of the corpus.
+
+**Links between categories**
+- 916 category pairs have at least 1 link; 221 have ≥ 5 and 30 have ≥ 20.
+- Many strong pairs involve (none) (e.g. Fonctions → (none) 42, (none) → Manufacturing 38):
+  uncategorized articles are well connected to categorized ones.
+(an article in several categories is counted for each pair, so weights are inflated)
+
 ## 4. Cognee
 
 Cognee is an open framework for building KGs and GraphRAG.
