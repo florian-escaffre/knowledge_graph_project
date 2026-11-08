@@ -1,2 +1,2 @@
-cognee 1.6.5
+cognee==1.6.5
 pyvis
