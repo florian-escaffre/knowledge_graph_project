@@ -3,7 +3,7 @@ from cognee import visualize_graph
 
 # Minimal test: send the first 5 Engipedia articles to Cognee, build the graph, save an HTML visualization.
 data = json.load(open("data/engipedia_fr_store.json", encoding="utf-8"))
-ents = list(data["entities"].values())[:5]
+ents = list(data["entities"].values())[:150]
 
 async def main():
     await cognee.prune.prune_data()
