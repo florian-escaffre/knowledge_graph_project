@@ -84,3 +84,9 @@ An alternative of Cognee for building the Knowledge graph can be Neo4j : so Why 
 **Graph model:** defines the structure of the graph, i.e. which types of entities and relationships are allowed. It constrains what the LLM can extract.
 
 **Ontology:** a reference vocabulary of the domain: official entity names and the hierarchy between concepts (e.g. a Clio is a Vehicle). It is used to normalise and enrich the extracted entities.
+
+### Use of Cognee to build knowledge graphs
+
+**Structured-output failures and timeouts**. Without an explicit BAML configuration, the local LLM (Llama 3.1 8B via Ollama) often returned output that did not match the expected schema. Cognee logged warnings and retried the call, and the accumulated retries eventually ended in a timeout. Explicitly configuring BAML to use the local Ollama endpoint (BAML_LLM_PROVIDER, BAML_LLM_MODEL, BAML_LLM_ENDPOINT, BAML_LLM_API_KEY in .env) resolved this.
+
+**Missing node descriptions**. Once extraction completed, some graph nodes still had null descriptions. Cognee’s default summary mode appears to run a separate summarization step (a second LLM call), which likely dropped them : the graph ended up with 0 entities. Setting summary_method="from_extraction" reuses the description generated during graph extraction, in a single LLM call per document, and fixed the issue.
