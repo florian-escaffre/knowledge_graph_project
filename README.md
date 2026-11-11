@@ -88,6 +88,9 @@ cp .env.example .env
 The default `.env` points cognee to the local Ollama server:
 
 ```dotenv
+# Use BAML for structured outputs  
+STRUCTURED_OUTPUT_FRAMEWORK="BAML"  
+
 # LLM — Ollama
 LLM_PROVIDER="ollama"
 LLM_MODEL="llama3.1:8b"
@@ -99,7 +102,15 @@ EMBEDDING_PROVIDER="ollama"
 EMBEDDING_MODEL="nomic-embed-text:latest"
 EMBEDDING_ENDPOINT="http://localhost:11434/api/embed"
 EMBEDDING_DIMENSIONS="768"
-HUGGINGFACE_TOKENIZER="nomic-ai/nomic-embed-text-v1.5"  # optional, recommended for accurate token counting
+HUGGINGFACE_TOKENIZER="nomic-ai/nomic-embed-text-v1.5"
+
+# BAML Configuration
+BAML_LLM_PROVIDER="ollama"  
+BAML_LLM_MODEL="llama3.1:8b"  
+BAML_LLM_ENDPOINT="http://localhost:11434/v1"  
+BAML_LLM_API_KEY="ollama"
+
+COGNEE_SKIP_CONNECTION_TEST=true
 ```
 
 `LLM_API_KEY="ollama"` is a dummy value required by cognee: Ollama does not need a real key.
