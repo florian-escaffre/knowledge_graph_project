@@ -1,6 +1,5 @@
-import asyncio, json, os, re
+import asyncio, json, os
 from collections import Counter
-from pathlib import Path
 
 # Avoid importing s3fs (AWS variables injected by Onyxia)
 for k in ("AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN"):
@@ -9,15 +8,9 @@ for k in ("AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN"):
 import cognee
 from cognee import visualize_graph
 
-N_ARTICLES = 150
+N_ARTICLES = 5
 
-# --- Extraction prompt: forces a non-null description on every node ---
-prompt_file = Path(cognee.__file__).parent / "infrastructure/llm/prompts/generate_graph_prompt.txt"
-base = prompt_file.read_text()
-base = re.sub(r"\{% if temporal_hints %\}.*?\{% endif %\}", "", base, flags=re.S)  # Jinja block not interpreted by custom_prompt
-
-
-# Minimal test: send the first 150 Engipedia articles to Cognee, build the graph, save an HTML visualization.
+# Minimal test: send the first 5 Engipedia articles to Cognee, build the graph, save an HTML visualization.
 data = json.load(open("data/engipedia_fr_store.json", encoding="utf-8"))
 ents = list(data["entities"].values())[:N_ARTICLES]
 
@@ -31,7 +24,7 @@ async def main():
         await cognee.add(f"{e['_term']}\n\n{e['_text']}")
 
     await cognee.cognify(summary_method="from_extraction") # Reuse extraction output for summaries instead of a separate LLM call
-    await visualize_graph("data/kg/graph_test.html")
+    await visualize_graph("data/kg/graph_test2.html")
 
     # Check: node types present
     try:
